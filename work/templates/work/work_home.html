@@ -1,0 +1,24 @@
+{% extends 'tasks/layout.html' %}
+
+{% block title %}{{ article.title }}{% endblock title %}
+
+{% block content %}
+    <div class="features">
+        <h1>Список задач</h1>
+        {% if work %}
+            {% for el in work %}
+                <div class = 'alert alert-warning'>
+                    <h2>Задача №{{ el.id }}</h2>
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.description }}</p>
+
+                    <p>{{ el.date }}</p>
+                    <input type="checkbox" value="{{ el.performed }}"><p>{{ el.performed }}</p>
+                    <a href="{% url 'work-detail' el.id %}" class="btn btn-warning">Посмотреть задачу</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>У вас нет задач!</p>
+        {% endif %}
+    </div>
+{% endblock %}

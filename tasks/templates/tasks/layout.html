@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'tasks/css/main.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <aside>
+        <img src="{% static 'tasks/img/logo.png' %}" alt="Лого">
+        <span class="logo">Nusupbek</span>
+        <h3>Навигация</h3>
+        <ul>
+            <a href="{% url 'login' %}"><li><button class="btn btn-danger">Авторизация</button></li></a>
+            <a href="{% url 'logout' %}"><li><button class="btn btn-danger">Выйти</button></li></a>
+            <a href="{% url 'password_change' %}"><li><button class="btn btn-danger">Сменить пароль</button></li></a>
+            <a href="{% url 'home' %}"><li>Главная страница</li></a>
+            <a href="{% url 'work_home' %}"><li>Список задач</li></a>
+            <a href="{% url 'create' %}"><li><button class="btn btn-info">Добавить задачу</button></li></a>
+        </ul>
+    </aside>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
